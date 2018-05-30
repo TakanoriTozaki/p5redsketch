@@ -1,21 +1,31 @@
+var pg;
+
 function setup() {
- createCanvas(720,400);
- background(51);
- noStroke();
- noLoop();
+  createCanvas(710, 400);
+  pg = createGraphics(400, 250);
 }
 
 function draw() {
- drawCircle(width/2, 280, 6);
-}
+  // 塗りは半透明
+  fill(0, 12);
+  // 画面の大きさ
+  rect(0, 0, width, height);
+  // 塗りは白
+  fill(255);
+  // 線は描かない
+  noStroke();
+  // 円を描く
+  ellipse(mouseX, mouseY, 60, 60);
 
-function drawCircle(x, radius, level) {
-	var tt = 122 * level/4.0;
-	fill(tt);
-	ellipse(x, height/2, radius*2, radius*2);
-	if (level > 1) {
-		level = level - 1;
-		drawCircle(x - radius/2, radius/2, level);
-		drawCircle(x + radius/2, radius/2, level);
-	}
+  // 色はグレー
+  pg.background(51);
+  // 塗りは無し
+  pg.noFill();
+  // 線の色は白
+  pg.stroke(255);
+  // 円を描く枠線のみ
+  pg.ellipse(mouseX-150, mouseY-75, 60, 60);
+
+  // createCanvasの画面の大きさ
+  image(pg, 150, 75);
 }

@@ -1,21 +1,20 @@
 function setup() {
- createCanvas(720,400);
- background(51);
- noStroke();
- noLoop();
+  createCanvas(720, 400);
+  noStroke();
+  noLoop();
 }
 
 function draw() {
- drawTarget(width*0.25, height*0.4, 200, 4);
- drawTarget(width*0.5, height*0.5, 300, 10);
- drawTarget(width*0.75, height*0.3, 120, 6);
+  drawCircle(width/2, 280, 6);
 }
 
-function drawTarget(xloc, yloc, size, num) {
-	var grayvalues = 255/num;
-	var steps = size/num;
-	for (var i = 0; i < num; i++) {
-		fill(i*grayvalues);
-		ellipse(xloc,yloc,size - i*steps,size - i*steps);
-	}
+function drawCircle(x, radius, level) {
+  var tt = 126 * level/4.0;
+  fill(tt);
+  ellipse(x, height/2, radius*2, radius*2);
+  if(level > 1) {
+    level = level - 1;
+    drawCircle(x - radius/2, radius/2, level);
+    drawCircle(x + radius/2, radius/2, level);
+  }
 }
