@@ -1,28 +1,20 @@
 function setup() {
-	var d = 70;
-	var p1 = d;
-	var p2 = p1 + d;
-	var p3 = p2 + d;
-	var p4 = p3 + d;
-	console.log(d,p1,p2,p3,p4);
-
-	createCanvas(720,400);
+	createCanvas(720, 400);
 	background(0);
-	noSmooth();
+	noStroke();
 
-	translate(140,0);
+	fill(204);
+	triangle(18, 18, 18, 360, 81, 360);
 
-	stroke(153);
-	line(p3,p3,p2,p3);
-	line(p2,p3,p2,p2);
-	line(p2,p2,p3,p2);
-	line(p3,p2,p3,p3);
+	fill(102);
+	rect(81, 81, 63, 63);
 
-	stroke(255);
-	point(p1,p1);
-	point(p1,p3);
-	point(p2,p4);
-	point(p3,p1);
-	point(p4,p2);
-	point(p4,p4);
+	fill(204);
+	quad(189, 18, 216, 18, 216, 360, 144, 360);
+
+	fill(204);
+	triangle(288, 18, 351, 360, 288, 360);
+
+	fill(255);
+	arc(479, 300, 280, 280, PI, TWO_PI);
 }
