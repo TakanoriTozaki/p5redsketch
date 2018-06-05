@@ -1,40 +1,32 @@
+var x;
+var y;
+var outsideRadius = 150;
+var insideRadius = 100;
+
 function setup() {
-	createCanvas(720,400);
+	createCanvas(720, 400);
+	background(204);
+	x = width/2;
+	y = height/2;
 }
 
 function draw() {
-	background(102);
+	background(204);
 
-	push();
-	translate(width*0.2,height*0.5);
-	rotate(frameCount / 200.0);
-	star(0, 0, 5, 70, 3);
-	pop();
+	var numPoints = int(map(mouseX, 0, width, 6, 60));
+	var angle = 0;
+	var angleStep = 180.0/numPoints;
 
-	push();
-	translate(width*0.5,height*0.5);
-	rotate(frameCount / 200.0);
-	star(0, 0, 80, 100, 40);
-	pop();
-
-	push();
-	translate(width*0.8,height*0.5);
-	rotate(frameCount / 200.0);
-	star(0, 0, 30, 70, 5);
-	pop();
-}
-
-function star(x, y, radius1, radius2, npoins) {
-	var angle = TWO_PI / npoins;
-	var halfAngle = angle / 2.0;
-	beginShape();
-	for (var a = 0; a < TWO_PI; a += angle) {
-		var sx = x + cos(a) * radius2;
-		var sy = y + sin(a) * radius2;
-		vertex(sx,sy);
-		sx = x + cos(a + halfAngle) * radius1;
-		sy = y + sin(a + halfAngle) * radius1;
-		vertex(sx,sy);
+	beginShape(TRIANGLE_STRIP);
+	for (var i = 0; i <= numPoints; i++) {
+		var px = x + cos(radians(angle)) * outsideRadius;
+		var py = y + sin(radians(angle)) * outsideRadius;
+		angle += angleStep;
+		vertex(px, py);
+		px = x + cos(radians(angle)) * insideRadius;
+		py = y + sin(radians(angle)) * insideRadius;
+		vertex(px, py);
+		angle += angleStep;
 	}
-	endShape(CLOSE);
+	endShape();
 }
