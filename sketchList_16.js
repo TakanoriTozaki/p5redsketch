@@ -1,12 +1,23 @@
 function setup() {
-	createCanvas(720,400);
-	stroke(255);
-	noFill();
+	createCanvas(720, 400, WEBGL);
 }
 
 function draw() {
-	background(0);
-	for (var i = 0; i < 200; i += 20) {
-		bezier(mouseX-(i/2.0), 40+i, 410, 20, 440, 300, 240-(i/16.0), 300+(i/8.0));
-	}
+	background(100);
+
+	noStroke();
+	fill(50);
+	push();
+	translate(-275, 175);
+	rotateY(1.25);
+	rotateX(-0.9);
+	box(100);
+	pop();
+
+	noFill();
+	stroke(255);
+	push();
+	translate(500, height*0.35, -200);
+	sphere(300);
+	pop();
 }
