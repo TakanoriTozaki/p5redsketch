@@ -1,22 +1,32 @@
 function setup() {
-	createCanvas(720,400, WEBGL);
-}
+	createCanvas(720, 400);
+	background(0);
+	stroke(153);
+	strokeWeight(4);
+	strokeCap(SQUARE);
 
-function draw() {
-	background(100);
-	noStroke();
+	var a = 50;
+	var b = 120;
+	var c = 180;
 
-	push();
-	translate(-300, 200);
-	rotateY(1.75);
-	rotateX(-0.9);
-	box(100)
-	pop();
+	line(a, b, a+c, b);
+	line(a, b+10, a+c, b+10);
+	line(a, b+20, a+c, b+20);
+	line(a, b+30, a+c, b+30);
 
-	noFill()
-	stroke(255);
-	push();
-	translate(200, height*0.15, -200);
-	sphere(200);
-	pop();
+	a = a + c;
+	b = height - b;
+
+	line(a, b, a+c, b);
+	line(a, b+10, a+c, b+10);
+	line(a, b+20, a+c, b+20);
+	line(a, b+30, a+c, b+30);
+
+	a = a + c;
+	b = height - b;
+
+	line(a, b, a+c, b);
+	line(a, b+10, a+c, b+10);
+	line(a, b+20, a+c, b+20);
+	line(a, b+30, a+c, b+30);
 }

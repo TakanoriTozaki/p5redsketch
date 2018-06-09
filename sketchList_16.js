@@ -2,15 +2,15 @@ function setup() {
 	createCanvas(720, 400, WEBGL);
 }
 
-function draw() {
+function draw () {
 	background(100);
 
 	noStroke();
 	fill(50);
 	push();
 	translate(-275, 175);
-	rotateY(1.25);
-	rotateX(-0.9);
+	rotate(1.25);
+	rotate(-0.9);
 	box(100);
 	pop();
 
