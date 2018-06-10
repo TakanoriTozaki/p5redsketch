@@ -1,25 +1,38 @@
+let a = 80;
+
 function setup() {
-	createCanvas(720,400);
+	createCanvas(720, 400);
 	background(0);
 	stroke(255);
+	noLoop();
+}
 
-	var b = false;
-	var d = 20;
-	var middle = width/2;
+function draw() {
+	// Draw a line using the global variable "a"
+	line(a, 0, a, height);
 
-	for (var i = d; i <= width; i += d) {
-		if (i < middle) {
-			b = true;
-		} else {
-			b = false;
-		}
-		if (b == true) {
-			// Vertical line
-			line(i, d, i, height-d);
-		}
-		if (b == false) {
-			// Horizontal line
-			line(middle, i - middle + d, width-d, i - middle + d);
-		}
+	// Use a local variable a in for Loop
+	for (let a = 120; a < 200; a += 3) {
+		line(a, 0, a, height);
 	}
+
+	// Make a call to the custom function drawAnotherLine()
+	drawAnotherLine();
+
+	// Make a call to the custom function drawYetAnotherLine()
+	drawYetAnotherLine();
+}
+
+function drawAnotherLine() {
+	// Create a new variagle "a" local to this function
+	let a = 320;
+	// Draw a line using the local variable "a"
+	line(a, 0, a, height);
+}
+
+function drawYetAnotherLine() {
+	// Because no new local variable "a" is set,
+	// this line draws using the original global
+	// variable "a" which is set to the value 20.
+	line(a + 3, 0, a + 3, height);
 }
