@@ -1,42 +1,23 @@
-var a = 80; // Create a global variable "a"
+var a = 0; // Create a global variable "a" of type Number
+var b = 0; // Create a global variable "b" of type Number
 
 function setup() {
-	createCanvas(720,400);
-	background(0);
+	createCanvas(720, 400);
 	stroke(255);
-	noLoop();
 }
 
 function draw() {
-	// Draw a line using the global variable "a"
-	line(a, 0, a, height);
+	background(0);
 
-	for (var a = 120; a < 200; a += 3) {
-		line(a, 0, a, height);
+	a = a + 1; // Increment a with an interger
+	b = b + 0.2; // Increment a with a float
+	line(a, 0, a, height/2);
+	line(b, height/2, b, height);
+
+	if (a > width) {
+		a = 0;
 	}
-
-	var a = 300;
-	// Draw a line using the new local variable "a"
-	line(a, 0, a, height);
-
-	// Make a call to custom function drawAnotherLine()
-	drawAnotherLine();
-
-	// Make a call to the custom function drawYetAnotherLine()
-	drawYetAnotherLine();
-}
-
-function drawAnotherLine() {
-	// Create a new variable "a" local to this function
-	var a = 320;
-	// Draw a line using the local variable "a"
-	line(a, 0, a, height);
-}
-
-function drawYetAnotherLine() {
-	// Because no new local variable "a" is set,
-	// this line draws using the original global
-	// variable "a" which is set to the value 20.
-	line(a+3, 0, a+3, height);
-	console.log(a);
+	if (b > width) {
+		b = 0;
+	}
 }
