@@ -3,7 +3,7 @@ var count;
 var mods = [];
 
 function setup() {
-	createCanvas(720,360);
+	createCanvas(720, 400);
 	noStroke();
 	var wideCount = width / unit;
 	var highCount = height / unit;
@@ -37,9 +37,9 @@ function Module(_xOff, _yOff, _x, _y, _speed, _unit) {
 }
 
 // Custom method for updating the variables
-Module.prototype.update = function() {
+Module.prototype.update = function () {
 	this.x = this.x + (this.speed * this.xDir);
-	if (this.x >= this.unit || this.y <= 0) {
+	if (this.x >= this.unit || this.x <= 0) {
 		this.xDir *= -1;
 		this.x = this.x + (1 * this.xDir);
 		this.y = this.y + (1 * this.yDir);
@@ -50,9 +50,8 @@ Module.prototype.update = function() {
 	}
 }
 
-// Custom method for drawing the getObject
+// Custom method for drawing the object
 Module.prototype.draw = function() {
 	fill(255);
 	ellipse(this.xOff + this.x, this.yOff + this.y, 6, 6);
-	//console.log(ellipse(this.xOff, this.yOff));
 }
