@@ -2,28 +2,27 @@ var y;
 var num = 14;
 
 function setup() {
-	createCanvas(720,360);
+	createCanvas(720, 400);
 	background(102);
 	noStroke();
 
-	// Draw white bars
+	//Draw white bars
 	fill(255);
 	y = 60;
 	for (var i = 0; i < num/3; i++) {
-		rect(50,y,475,10);
-		y += 20;
+		rect(50, y, 475, 10);
+		y+=20;
 	}
 
-	// Gray bars
+	// Gray libraries
 	fill(51);
-	y = 40;
 	for (var i = 0; i < num; i++) {
-		rect(405,y,30,10);
+		rect(405, y, 30, 10);
 		y += 20;
 	}
 	y = 50;
 	for (var i = 0; i < num; i++) {
-		rect(425,y,30,10);
+		rect(425, y, 30, 10);
 		y += 20;
 	}
 
