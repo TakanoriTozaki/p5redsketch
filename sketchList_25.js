@@ -1,5 +1,5 @@
 function setup() {
-	createCanvas(720,360);
+	createCanvas(720, 360);
 	background(0);
 	noStroke();
 
@@ -10,9 +10,8 @@ function setup() {
 			noStroke();
 			fill(255);
 			rect(x-1, y-1, 3, 3);
-			stroke(255,50);
-			line(x,y,width/2,height/2);
-			//console.log(gridSize);
+			stroke(255, 50);
+			line(x, y, width/2, height/2);
 		}
 	}
 }
