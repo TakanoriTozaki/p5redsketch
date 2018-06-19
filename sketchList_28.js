@@ -7,7 +7,7 @@ function setup() {
 	for (var i = 5; i <= height; i += 5) {
 		// Logical AND
 		stroke(0);
-		if((i > 35) && (i < 100)) {
+		if ((i > 35) && (i < 100)) {
 			line(width/4, i, width/2, i);
 			test = false;
 		}
@@ -20,14 +20,14 @@ function setup() {
 		}
 
 		// Testing if a boolean value is "true"
-		// The expression "if(test)" is equivalent to "if(test)"
+		// The expression "if(test)" is equivalent to "if(test == true)"
 		if (test) {
 			stroke(0);
 			point(width/3, i);
 		}
 
 		// Testing if a boolean value is "false"
-		// The expression "if(!test)" is equivlent to "if(test)"
+		// The expression "if(!test)" is equivalent to "if(test == false)"
 		if (!test) {
 			stroke(255);
 			point(width/4, i);
