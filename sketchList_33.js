@@ -1,25 +1,21 @@
-var img;
-var smallPoint, largePoint;
-
-function preload() {
-	img = loadImage("assets/pic1.jpg");
-}
+var img; // Declare variable 'img'.
 
 function setup() {
-	createCanvas(600, 600);
-	smallPoint = 4;
-	largePoint = 40;
-	imageMode(CENTER);
-	noStroke();
-	background(255);
+	createCanvas(720, 360);
+	img = createImage(230, 230);
+
 	img.loadPixels();
+	for (var x = 0; x < img.width; x++) {
+		for (var y = 0; y < img.height; y++) {
+			var a = map(y, 0, img.height, 255, 0);
+			img.set(x, y, [0, 153, 204, a]);
+		}
+	}
+	img.updatePixels();
 }
 
 function draw() {
-	var pointillize = map(mouseX, 0, width, smallPoint, largePoint);
-	var x = floor(random(img.width));
-	var y = floor(random(img.height));
-	var pix = img.get(x, y);
-	fill(pix, 128);
-	ellipse(x, y, pointillize, pointillize);
+	background(0);
+	image(img, 90, 80);
+	image(img, mouseX-img.width/2, mouseY-img.height/2);
 }

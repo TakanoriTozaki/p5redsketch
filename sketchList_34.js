@@ -1,19 +1,25 @@
-var barWidth = 20;
-var lastBar = -1;
+var img;
+var smallPoint, largePoint;
+
+function preload() {
+	img = loadImage("assets/luka.jpg");
+}
 
 function setup() {
-	createCanvas(720, 400);
-	colorMode(HSB, height, height, height);
+	createCanvas(720, 360);
+	smallPoint = 4;
+	largePoint = 40;
+	imageMode(CENTER);
 	noStroke();
-	background(0);
+	background(255);
+	img.loadPixels();
 }
 
 function draw() {
-	var whichBar = mouseX / barWidth;
-	if (whichBar !== lastBar) {
-		var barX = whichBar * barWidth;
-		fill(mouseY, height, height);
-		rect(barX, 0, barWidth, height);
-		lastBar = whichBar;
-	}
+	var pointllize = map(mouseX, 0, width, smallPoint, largePoint);
+	var x = floor(random(img.width));
+	var y = floor(random(img.height));
+	var pix = img.get(x, y);
+	fill(pix, 128);
+	ellipse(x, y, pointllize, pointllize);
 }
