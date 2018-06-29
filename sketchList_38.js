@@ -1,28 +1,39 @@
-var a, b, c, d, e;
+var img;
+
+function preload() {
+	img = loadImage("assets/luka.jpg");
+}
 
 function setup() {
-	createCanvas(720, 400);
-	noStroke();
-	a = color(165, 167, 20);
-	b = color(77, 86, 59);
-	c = color(42, 106, 105);
-	d = color(165, 89, 20);
-	e = color(146, 150, 127);
-	noLoop(); // Draw only one time
+	createCanvas(720, 360);
+	pixelDensity(1);
+	img.loadPixels();
+	loadPixels();
 }
 
 function draw() {
-	drawBand(a, b, c, d, e, 0, width/128);
-	drawBand(c, a, d, b, e, height/2, width/128);
-}
-
-function drawBand(v, w, x, y, z, ypos, barWidth) {
-	var num = 5;
-	var colorOrder = [v, w, x, y, z];
-	for(var i = 0; i < width; i += barWidth*num) {
-		for(var j = 0; j < num; j++) {
-			fill(colorOrder[j]);
-			rect(i+j*barWidth, ypos, barWidth, height/2);
+	for (var x = 0; x < img.width; x++) {
+		for (var y = 0; y < img.height; y++) {
+			// Calculate the 1D location from a 2D grid
+			var loc = (x + y*img.width)*4;
+			// Get the R,G,B values from loadImage
+			var r,g,b;
+			r = img.pixels[loc];
+			// Calculate an amount to change brightness based on proximity to the mouse
+			var maxdist = 50;
+			var d = dist(x, y, mouseX, mouseY);
+			var adjustbrightness = 255*(maxdist-d)/maxdist;
+			r += adjustbrightness;
+			// Constrain RGB to make sure they are within 0-255 color range
+			r = constrain(r, 0, 255);
+			// Make a new color and set pixel in the window
+			// color c = color(r, g, b);
+			var pixloc = (y*width + x)*4;
+			pixels[pixloc] = r;
+			pixels[pixloc+1] = r;
+			pixels[pixloc+2] = r;
+			pixels[pixloc+3] = 255;
 		}
 	}
+	updatePixels();
 }
