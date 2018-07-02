@@ -1,36 +1,28 @@
+var dim;
+
 function setup() {
-  createCanvas(720, 400);
-  background(255);
+  createCanvas(720, 360);
+  dim = width/2;
+  background(0);
+  colorMode(HSB, 360, 100, 100);
   noStroke();
+  ellipseMode(RADIUS);
+  frameRate(1);
 }
 
 function draw() {
-  background(255);
-  from = color(255, 0, 0, 0.2 * 255);
-  to = color(0, 0, 255, 0.2 * 255);
-  c1 = lerpColor(from, to, .33);
-  c2 = lerpColor(from, to, .66);
-  for (var i = 0; i < 15; i++) {
-    fill(from);
-    quad(random(-40, 220), random(height),
-         random(-40, 220), random(height),
-         random(-40, 220), random(height),
-         random(-40, 220), random(height));
-    fill(c1);
-    quad(random(140, 380), random(height),
-         random(140, 380), random(height),
-         random(140, 380), random(height),
-         random(140, 380), random(height));
-    fill(c2);
-    quad(random(320, 580), random(height),
-         random(320, 580), random(height),
-         random(320, 580), random(height),
-         random(320, 580), random(height));
-    fill(to);
-    quad(random(500, 760), random(height),
-         random(500, 760), random(height),
-         random(500, 760), random(height),
-         random(500, 760), random(height));
+  background(0);
+  for (var x = 0; x <= width; x+=dim) {
+    drawGradient(x, height/2);
   }
-  frameRate(5);
+}
+
+function drawGradient(x, y) {
+  var radius = dim/2;
+  var h = random(0, 360);
+  for (var r = radius; r > 0; --r) {
+    fill(h, 90, 90);
+    ellipse(x, y, r, r);
+    h = (h + 1) % 360;
+  }
 }
