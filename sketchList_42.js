@@ -1,37 +1,33 @@
-var a;
-var b;
-var direction;
-
 function setup() {
-  createCanvas(710, 400);
-  colorMode(RGB, width);
-  a = 0;
-  b = width;
-  direction = true;
-  frameRate(30);
+  createCanvas(720, 400);
+  background(255);
+  noStroke();
 }
 
 function draw() {
-  a++;
-  if(a > width) {
-    a = 0;
-    direction = !direction;
+  background(255);
+  from = color(255, 0, 0, 0.2 * 255);
+  to = color(0, 0, 255, 0.2　* 255);
+  c1 = lerpColor(from, to, .33);
+  c2 = lerpColor(from, to, .66);
+  for (var i = 0; i < 15; i++) {
+    fill(from);
+    quad(random(-40, 220), random(height),random(-40, 220), random(height),random(-40, 220), random(height),random(-40, 220), random(height));
+    fill(c1);
+    quad(random(140, 380), random(height),
+         random(140, 380), random(height),
+         random(140, 380), random(height),
+         random(140, 380), random(height));
+    fill(from);
+    quad(random(320, 580), random(height),
+         random(320, 580), random(height),
+         random(320, 580), random(height),
+         random(320, 580), random(height));
+    fill(from);
+    quad(random(500, 760), random(height),
+         random(500, 760), random(height),
+         random(500, 760), random(height),
+         random(500, 760), random(height));
   }
-  if(direction == true) {
-    stroke(a);
-  } else {
-    stroke(width-a);
-  }
-  line(a, 0, a, height/2);
-
-  b--;
-  if(b < 0) {
-    b = width;
-  }
-  if(direction == true) {
-    stroke(width-b);
-  } else {
-    stroke(b);
-  }
-  line(b, height/2+1, b, height);
+  frameRate(5);
 }
