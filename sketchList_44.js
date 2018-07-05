@@ -1,44 +1,41 @@
-var xpos1;
-var xpos2;
-var xpos3;
-var xpos4;
-var thin = 8;
-var thick = 36;
-
+// The highest precedence is at the top of the list rand
+// the lowest is at the bottom.
+// Multiplicative: * / %
+// Additive: + -
+// Relational: < > <= >=
+// Equality: == !=
+// Logical AND: &&
+// Logical OR: ||
+// Assignment: = += -= *= /= %=
 function setup() {
-  createCanvas(710, 400);
-  noStroke();
-  xpos1 = width/2;
-  xpos2 = width/2;
-  xpos3 = width/2;
-  xpos4 = width/2;
-}
+  createCanvas(720, 360);
+  background(51);
+  noFill();
+  stroke(51);
 
-function draw() {
-  background(0);
+  stroke(204);
+  for(var i=0; i < width-20; i+=4) {
+    // The 30 is added to 70 and then evaluate
+    // if it is greater then the current value of "i"
+    // For clarity, write as "if (i > (30 + 70)) {"
+    if (i > 30 + 70) {
+      line(i, 0, i, 50);
+    }
+  }
 
-  var mx = mouseX * 0.4 - width/5.0;
+  stroke(255);
+  // The 2 is multiplied by the 8 and the result is added to the 4
+  // For clarity, write as "rect(5 + (2 * 8), 0, 90, 20)"
+  rect(4 + 2 * 8, 52, 290, 48);
+  rect((4 + 2) * 8, 100, 290, 49);
 
-  fill(102);
-  rect(xpos2, 0, thick, height/2);
-  fill(204);
-  rect(xpos1, 0, thin, height/2);
-  fill(102);
-  rect(xpos4, height/2, thick, height/2);
-  fill(204);
-  rect(xpos3, height/2, thin, height/2);
-
-  xpos1 += mx/16;
-  xpos2 += mx/36;
-  xpos3 -= mx/16;
-  xpos4 -= mx/36;
-
-  if(xpos1 < -thin) { xpos1 = width; }
-  if(xpos1 > width) { xpos1 = -thin; }
-  if(xpos2 < -thick) {xpos2 = width; }
-  if(xpos2 > width) { xpos2 = -thick; }
-  if(xpos3 < -thin) { xpos3 = width; }
-  if(xpos3 > width) { xpos3 = -thin; }
-  if(xpos4 < -thick) { xpos4 = width; }
-  if(xpos4 > width) { xpos4 = -thick; }
+  stroke(153);
+  for (var i = 0; i < width; i+=2) {
+    // The relational statements are evaluated
+    // first, and then the logical AND statements AND
+    // "if(((i > 20) && (i < 50)) || ((i > 100) && (i < width-20))) {"
+    if (i > 20 && i < 50 || i > 100 && i < width-20) {
+      line(i, 151, i, height-1);
+    }
+  }
 }
