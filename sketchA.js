@@ -11,4 +11,5 @@ function draw() {
 	box(40);
 	box(50, 50, 50);
 	sphere(40,50,50);
+	sphere(40,100,100);
 }
