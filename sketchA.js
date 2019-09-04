@@ -1,4 +1,4 @@
-// unicorn
+// The Unicorn and the Pony
 
 function setup() {
 	createCanvas(100, 100, WEBGL);
@@ -13,3 +13,4 @@ function draw() {
 	sphere(40,50,50);
 	sphere(40,100,100);
 }
+// Pony
